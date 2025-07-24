@@ -1,0 +1,3 @@
+[submodule "tmux-use"]
+	path = tmux-use
+	url = git@github.com:teaguesterling/tmux-use
