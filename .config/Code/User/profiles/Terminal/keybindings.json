@@ -1,0 +1,38 @@
+[
+  {
+    "key": "ctrl+alt+t",
+    "command": "workbench.action.createTerminalEditor",
+    "when": "terminalProcessSupported"
+  },
+  
+  // Completely disable all Alt+click behaviors in terminal
+  {
+    "key": "alt+click",
+    "command": "",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "shift+alt+click", 
+    "command": "",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+alt+click",
+    "command": "",
+    "when": "terminalFocus"
+  },
+  
+  // Disable global column selection commands
+  {
+    "key": "alt+click",
+    "command": "-editor.action.insertCursorAtEndOfEachLineSelected"
+  },
+  {
+    "key": "shift+alt+click",
+    "command": "-editor.action.columnSelect"
+  },
+  {
+    "key": "alt+shift+drag",
+    "command": "-editor.action.columnSelect"
+  }
+]

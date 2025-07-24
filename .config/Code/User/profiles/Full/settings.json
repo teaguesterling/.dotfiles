@@ -1,0 +1,16 @@
+{
+  // 90% opacity
+  "window.opacity": 0.9,
+  "window.backgroundMaterial": "acrylic", // Windows
+  "window.vibrancy": "dark", // macOS
+  
+  // Terminal transparency
+  "workbench.colorCustomizations": {
+    "terminal.background": "#1e1e1ee6",
+    "editor.background": "#1e1e1ee6"
+  },
+  
+  // Modern look
+  "window.titleBarStyle": "custom",
+  "workbench.colorTheme": "Default Dark Modern"
+}

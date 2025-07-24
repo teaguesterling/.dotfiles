@@ -1,0 +1,15 @@
+{
+  // Selective IntelliSense
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.surveys.enabled": false,
+  "javascript.validate.enable": false,
+  
+  // Limit language features
+  "editor.semanticHighlighting.enabled": false,
+  "editor.suggest.maxVisibleSuggestions": 5,
+  
+  // Reduce background work
+  "git.autorefresh": false,
+  "git.autofetch": false,
+  "search.searchOnType": false
+}

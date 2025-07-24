@@ -1,0 +1,21 @@
+{
+  // Basic editor features
+  "editor.wordWrap": "on",
+  "editor.rulers": [80, 120],
+  "editor.renderWhitespace": "selection",
+  "files.autoSave": "afterDelay",
+  
+  // Simple suggestions only
+  "editor.quickSuggestions": {
+    "strings": false,
+    "comments": false,
+    "other": true
+  },
+  "editor.wordBasedSuggestions": true,
+  "editor.snippetSuggestions": "none",
+  
+  // UI for editing
+  "workbench.activityBar.visible": false,
+  "workbench.sideBar.location": "right",
+  "explorer.openEditors.visible": 0
+}

@@ -1,0 +1,16 @@
+{
+  // Merge Terminal + Editor, plus:
+  "workbench.activityBar.visible": true,
+  "workbench.sideBar.location": "left",
+  
+  // File browser
+  "explorer.compactFolders": false,
+  "explorer.sortOrder": "type",
+  
+  // Markdown for Claude interactions
+  "markdown.preview.fontSize": 14,
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": false
+  }
+}
