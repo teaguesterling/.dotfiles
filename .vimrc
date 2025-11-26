@@ -68,8 +68,10 @@ set updatetime=50       " Faster completion and swap file writes (ms)
 " ============================================
 
 " Use Ctrl-C to copy in visual mode (instead of cancel)
-"vnoremap <C-S-c> "+ygv<Esc>
-"vnoremap <C-S-v> "+pgv<Esc>
+" This only works when text is visually selected
+vnoremap <C-c> "+y
+" Also map Ctrl+V to paste in visual mode
+vnoremap <C-v> "+p
 
 " Better escape (AUDIT CHANGE: commented out since caps lock is mapped to escape)
 " inoremap jk <Esc>

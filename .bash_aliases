@@ -17,7 +17,7 @@ alias ldot='ls -ld .*'          # List only dotfiles
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias rg='grep -r'              # Recursive grep
+#alias rg='grep -r'              # Recursive grep
 
 # Safety nets
 alias rm='rm -i'                # Confirm before removing
@@ -49,10 +49,10 @@ alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'  # Search processes
 # Misc utilities
 alias h='history'
 alias j='jobs -l'
-alias which='type -all'
 alias path='echo -e ${PATH//:/\\n}'  # Print each PATH entry on new line
 alias now='date +"%T"'
 alias nowdate='date +"%d-%m-%Y"'
+#alias which='type -all'
 
 # Alert for long running commands
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -72,7 +72,6 @@ alias spa="spack env activate "
 alias spd="spack env deactivate "
 alias spl="spack location "
 alias spcd="spack cd "
-alias spackup="source $_SPACK_SETUP"
 
 # Git shortcuts (add these if you use git)
 alias g='git'
@@ -106,13 +105,7 @@ alias tmain='tmux attach -t main || tmux new -s main'
 alias twork='tmux attach -t work || tmux new -s work'
 alias tdev='tmux attach -t dev || tmux new -s dev'
 
-# -----------------------------------------------------------------------------
-# Alacritty specific
-# -----------------------------------------------------------------------------
-
-# Quick theme testing
-alias atest='alacritty --config-file'
-alias atheme='alacritty --print-events'  # Debug theme loading
+alias th='tmu-here'
 
 # -----------------------------------------------------------------------------
 # Useful functions as aliases

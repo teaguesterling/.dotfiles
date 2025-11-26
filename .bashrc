@@ -85,6 +85,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Enable case-insensitive tab completion
+bind "set completion-ignore-case on"
+
 # Default text editor configuration (used by git, crontab, etc.)
 export VISUAL=/usr/bin/vim      # Full-screen editor
 export EDITOR="$VISUAL"         # Fallback editor (same as VISUAL)
@@ -93,6 +96,11 @@ export EDITOR="$VISUAL"         # Fallback editor (same as VISUAL)
 _VCPKG=/home/teague/Dev/vcpkg
 _SPACK=/home/teague/Dev/spack
 _SPACK_SETUP="$_SPACK/share/spack/setup-env.sh"
+function spackup() {
+	source "$_SPACK_SETUP"
+	[ ! -z "$1" ] && spack env activate "$1"
+}
+
 if [ -f $_VCPKG/scripts/buildsystems/vcpkg.cmake ] ; then
 	export VCPKG_TOOLCHAIN_PATH=$_VCPKG/scripts/buildsystems/vcpkg.cmake
 fi
@@ -117,10 +125,14 @@ else
     export HISTFILE="$HOME/.bash_history"
 fi
 
+if [ -d "$HOME/.bin" ] ; then 
+    export PATH="$HOME/.bin:$PATH"
+fi
+
 # Auto-attach to tmux (optional - uncomment if you want this)
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#     exec tmux new-session -As main
-# fi
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#    exec tmux new-session -As main
+#fi
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
