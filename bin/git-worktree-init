@@ -1,0 +1,54 @@
+#!/bin/bash
+# Restructures a git repo for worktree usage:
+#   Projects/repo-name  →  Projects/repo-name/main + Projects/repo-name/trees
+#
+# Usage: git-worktree-init <project-path>
+#        git-worktree-init .                    # current directory
+#
+# Example: git-worktree-init ~/Projects/my-repo
+
+set -euo pipefail
+
+die() { echo "Error: $1" >&2; exit 1; }
+
+PROJECT_PATH="${1:-.}"
+
+# Resolve to absolute path
+PROJECT_PATH="$(cd "$PROJECT_PATH" 2>/dev/null && pwd)" || die "Path does not exist: $1"
+PROJECT_NAME="$(basename "$PROJECT_PATH")"
+PARENT_DIR="$(dirname "$PROJECT_PATH")"
+
+# Validation
+[[ -d "$PROJECT_PATH/.git" ]] || die "Not a git repository: $PROJECT_PATH"
+[[ -d "$PROJECT_PATH/main" ]] && die "Already restructured (main/ exists): $PROJECT_PATH"
+[[ -d "$PROJECT_PATH/trees" ]] && die "Already restructured (trees/ exists): $PROJECT_PATH"
+
+# Check for uncommitted changes
+if ! git -C "$PROJECT_PATH" diff-index --quiet HEAD -- 2>/dev/null; then
+    echo "Warning: uncommitted changes detected"
+    read -p "Continue anyway? [y/N] " -n 1 -r
+    echo
+    [[ $REPLY =~ ^[Yy]$ ]] || exit 1
+fi
+
+echo "Restructuring: $PROJECT_PATH"
+echo "  $PROJECT_NAME/ → $PROJECT_NAME/main/ + $PROJECT_NAME/trees/"
+echo
+
+# Perform restructure
+TEMP_NAME="${PROJECT_NAME}.worktree-migrate.tmp"
+
+cd "$PARENT_DIR"
+mv "$PROJECT_NAME" "$TEMP_NAME"
+mkdir "$PROJECT_NAME"
+mv "$TEMP_NAME" "$PROJECT_NAME/main"
+mkdir "$PROJECT_NAME/trees"
+
+echo "Done! Structure is now:"
+echo "  $PROJECT_NAME/"
+echo "  ├── main/    # your repo"
+echo "  └── trees/   # worktrees go here"
+echo
+echo "Create worktrees with:"
+echo "  cd $PROJECT_PATH/main"
+echo "  git worktree add ../trees/<name> <branch>"

@@ -18,7 +18,6 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 #alias rg='grep -r'              # Recursive grep
-
 # Safety nets
 alias rm='rm -i'                # Confirm before removing
 alias cp='cp -i'                # Confirm before overwriting
@@ -31,7 +30,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ~='cd ~'
-alias -- -='cd -'               # Go to previous directory
+alias .-='cd -'               # Go to previous directory
 
 # -----------------------------------------------------------------------------
 # System utilities
@@ -64,7 +63,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # Your existing development aliases
 alias o="xdg-open "
 alias jqless="jq -C . | less -R"
-alias claude="/home/teague/.claude/local/node_modules/.bin/claude"
 
 # Spack aliases
 alias sp="spack "

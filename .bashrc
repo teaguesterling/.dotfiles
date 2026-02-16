@@ -125,19 +125,22 @@ else
     export HISTFILE="$HOME/.bash_history"
 fi
 
-if [ -d "$HOME/.bin" ] ; then 
+if [ -d "$HOME/.bin" ] ; then
     export PATH="$HOME/.bin:$PATH"
+fi
+
+if [ -d "$HOME/.dotfiles/bin" ] ; then
+    export PATH="$HOME/.dotfiles/bin:$PATH"
+fi
+
+if [ -d "$HOME/.cargo/bin" ] ; then 
+    export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # Auto-attach to tmux (optional - uncomment if you want this)
 #if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
 #    exec tmux new-session -As main
 #fi
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -147,3 +150,6 @@ if [ -f ~/.tmux-use.bashrc ]; then
     . ~/.tmux-use.bashrc
 fi
 
+if [ -f ~/.shq-init.bashrc ]; then
+    . ~/.shq-init.bashrc
+fi
