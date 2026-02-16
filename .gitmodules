@@ -1,3 +1,6 @@
 [submodule "tmux-use"]
 	path = tmux-use
 	url = git@github.com:teaguesterling/tmux-use
+[submodule "git-wt"]
+	path = git-wt
+	url = ./git-wt

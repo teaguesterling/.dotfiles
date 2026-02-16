@@ -49,6 +49,13 @@ echo "  $PROJECT_NAME/"
 echo "  ├── main/    # your repo"
 echo "  └── trees/   # worktrees go here"
 echo
+
+# Create marker file for git-wt
+touch "$PARENT_DIR/$PROJECT_NAME/.git-worktree"
+
 echo "Create worktrees with:"
 echo "  cd $PROJECT_PATH/main"
 echo "  git worktree add ../trees/<name> <branch>"
+echo
+echo "Or use git-wt wrapper:"
+echo "  git-wt start <branch-name>"
